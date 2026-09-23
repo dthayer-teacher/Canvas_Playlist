@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Course Playlist</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Development Playlist</title>
 
   <style>
     * {
@@ -13,110 +12,117 @@
 
     body {
       margin: 0;
+      background: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f4f6f8;
       color: #222;
     }
 
-    .page {
+    .page-shell {
       max-width: 1000px;
-      margin: 0 auto;
-      padding: 30px 20px 50px;
+      margin: 25px auto;
+      background-color: #eef4f8;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #d5e0e8;
     }
 
-    .header {
+    .top-banner {
+      background-color: #f2f5f8;
+      padding: 35px;
       text-align: center;
-      margin-bottom: 30px;
     }
 
-    .header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-      color: #1f2937;
+    .top-banner img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      margin: auto;
+      border-radius: 12px;
     }
 
-    .header p {
-      margin-top: 10px;
-      font-size: 1rem;
-      color: #6b7280;
+    .content {
+      background-color: #ffffff;
+      padding: 40px 35px;
+    }
+
+    .page-title {
+      text-align: center;
+      color: #1f4e79;
+      font-size: 30px;
+      margin: 0 0 12px 0;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #5f6f7c;
+      font-size: 16px;
+      margin-bottom: 8px;
     }
 
     .date-range {
-      margin-top: 8px;
+      text-align: center;
+      color: #1f4e79;
       font-weight: bold;
-      color: #374151;
+      margin-bottom: 30px;
     }
 
     .section-title {
-      margin-top: 35px;
-      margin-bottom: 15px;
-      font-size: 1.4rem;
-      color: #1f2937;
-      border-bottom: 2px solid #d1d5db;
+      color: #1f4e79;
+      font-size: 23px;
+      margin: 30px 0 15px;
       padding-bottom: 8px;
+      border-bottom: 2px solid #d5e0e8;
     }
 
     .playlist-card {
-      background: white;
+      background: #f8fbfd;
+      border: 1px solid #d5e0e8;
       border-radius: 12px;
       padding: 22px;
       margin-bottom: 18px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      border-left: 6px solid #2563eb;
     }
 
     .playlist-card.past {
-      border-left-color: #dc2626;
+      border-left: 6px solid #b94a48;
     }
 
     .playlist-card.today {
-      border-left-color: #f59e0b;
+      border-left: 6px solid #d39e00;
     }
 
     .playlist-card.future {
-      border-left-color: #16a34a;
+      border-left: 6px solid #4f8a5b;
     }
 
     .card-type {
-      font-size: 0.8rem;
+      color: #6b7780;
+      font-size: 13px;
       font-weight: bold;
       text-transform: uppercase;
-      color: #6b7280;
       margin-bottom: 6px;
     }
 
     .playlist-card h2 {
-      margin: 0 0 10px;
-      font-size: 1.35rem;
-      color: #111827;
+      color: #1f4e79;
+      font-size: 23px;
+      margin: 0 0 10px 0;
     }
 
     .due-date {
       font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .past .due-date {
-      color: #dc2626;
-    }
-
-    .today .due-date {
-      color: #d97706;
-    }
-
-    .future .due-date {
-      color: #15803d;
+      margin-bottom: 14px;
     }
 
     .assignment-list {
-      margin: 15px 0;
-      padding: 0;
       list-style: none;
+      padding: 0;
+      margin: 12px 0 5px;
     }
 
     .assignment-list li {
       padding: 10px 0;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid #dfe7ed;
     }
 
     .assignment-list li:last-child {
@@ -125,58 +131,81 @@
 
     .assignment-name {
       font-weight: bold;
+      color: #2b3e50;
     }
 
     .assignment-date {
       display: block;
       margin-top: 4px;
-      font-size: 0.9rem;
-      color: #6b7280;
+      color: #687783;
+      font-size: 14px;
     }
 
     .open-button {
       display: inline-block;
-      margin-top: 10px;
-      padding: 11px 18px;
-      background: #2563eb;
-      color: white;
+      width: 220px;
+      background-color: #1f4e79;
+      color: #ffffff;
+      padding: 16px 10px;
+      border-radius: 10px;
       text-decoration: none;
-      border-radius: 7px;
-      font-weight: bold;
-      transition: 0.2s;
+      font-size: 19px;
+      text-align: center;
+      margin-top: 10px;
     }
 
     .open-button:hover {
-      background: #1d4ed8;
+      background-color: #163a5b;
     }
 
     .status-message {
       text-align: center;
-      padding: 35px;
-      background: white;
+      background: #f8fbfd;
+      border: 1px solid #d5e0e8;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      padding: 30px;
+      color: #4d5f6d;
     }
 
-    .loading {
-      color: #6b7280;
+    .nav-row {
+      text-align: center;
+      margin-top: 35px;
     }
 
-    .error {
-      color: #b91c1c;
+    .nav-button {
+      display: inline-block;
+      width: 220px;
+      background-color: #1f4e79;
+      color: #ffffff;
+      padding: 16px 10px;
+      margin: 8px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 20px;
+      text-align: center;
     }
 
-    @media (max-width: 600px) {
-      .page {
-        padding: 20px 12px;
+    .nav-button:hover {
+      background-color: #163a5b;
+    }
+
+    @media (max-width: 700px) {
+      .page-shell {
+        margin: 10px;
       }
 
-      .header h1 {
-        font-size: 1.7rem;
+      .content {
+        padding: 25px 18px;
       }
 
-      .playlist-card {
-        padding: 18px;
+      .top-banner {
+        padding: 20px;
+      }
+
+      .open-button,
+      .nav-button {
+        width: 100%;
+        max-width: 260px;
       }
     }
   </style>
@@ -184,23 +213,55 @@
 
 <body>
 
-  <div class="page">
+  <div class="page-shell">
 
-    <div class="header">
-      <h1>Current Playlist</h1>
-
-      <p>
-        Assignments and modules from the previous 7 days
-        through the next 14 days.
-      </p>
-
-      <div id="dateRange" class="date-range"></div>
+    <div class="top-banner">
+      <img
+        src="https://bwschools.instructure.com/courses/22643/files/6392801/preview"
+        alt="Web Development"
+      />
     </div>
 
-    <div id="playlist">
+    <div class="content">
 
-      <div class="status-message loading">
-        Loading your playlist...
+      <h1 class="page-title">Web Development Playlist</h1>
+
+      <div class="subtitle">
+        Assignments and modules from the previous 7 days through the next 14 days.
+      </div>
+
+      <div id="dateRange" class="date-range"></div>
+
+      <div id="playlist">
+        <div class="status-message">
+          Loading playlist...
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <a
+          class="nav-button"
+          href="https://bwschools.instructure.com/courses/22643/pages/contact"
+          target="_parent"
+        >
+          Contact
+        </a>
+
+        <a
+          class="nav-button"
+          href="https://bwschools.instructure.com/courses/22643/pages/virtual"
+          target="_parent"
+        >
+          Virtual
+        </a>
+
+        <a
+          class="nav-button"
+          href="https://bwschools.instructure.com/courses/22643/modules/244184"
+          target="_parent"
+        >
+          Modules
+        </a>
       </div>
 
     </div>
@@ -213,10 +274,6 @@
     const DATA_URL =
       "https://script.google.com/macros/s/AKfycbzAiYGEDabMMfgN-L428davT77849rxP-YnyayLMYw0BSTpEzbbm_U-egll6XaJz4SY/exec";
 
-
-    // ----------------------------------------------------
-    // LOAD PLAYLIST
-    // ----------------------------------------------------
 
     async function loadPlaylist() {
 
@@ -239,8 +296,7 @@
 
         if (!data.success) {
           throw new Error(
-            data.error ||
-            "Canvas returned an unknown error."
+            data.error || "Canvas returned an unknown error."
           );
         }
 
@@ -253,13 +309,11 @@
           data.playlist
         );
 
-      }
-
-      catch (error) {
+      } catch (error) {
 
         playlistContainer.innerHTML =
           `
-          <div class="status-message error">
+          <div class="status-message">
             <strong>Playlist could not be loaded.</strong>
             <br><br>
             ${error.message}
@@ -271,17 +325,10 @@
     }
 
 
-    // ----------------------------------------------------
-    // DISPLAY DATE RANGE
-    // ----------------------------------------------------
-
     function displayDateRange(start, end) {
 
-      const startDate =
-        new Date(start);
-
-      const endDate =
-        new Date(end);
+      const startDate = new Date(start);
+      const endDate = new Date(end);
 
       const options = {
         month: "long",
@@ -299,17 +346,12 @@
     }
 
 
-    // ----------------------------------------------------
-    // DISPLAY PLAYLIST
-    // ----------------------------------------------------
-
     function displayPlaylist(items) {
 
       const container =
         document.getElementById("playlist");
 
       container.innerHTML = "";
-
 
       if (!items || items.length === 0) {
 
@@ -318,20 +360,17 @@
           <div class="status-message">
             <strong>You are all caught up!</strong>
             <br><br>
-            There are currently no assignments
-            in the playlist window.
+            There are currently no assignments in the playlist window.
           </div>
           `;
 
         return;
       }
 
-
       const pastItems = [];
       const upcomingItems = [];
 
       const now = new Date();
-
 
       items.forEach(item => {
 
@@ -346,10 +385,6 @@
 
       });
 
-
-      // --------------------------------------------------
-      // RECENTLY DUE
-      // --------------------------------------------------
 
       if (pastItems.length > 0) {
 
@@ -366,10 +401,6 @@
 
       }
 
-
-      // --------------------------------------------------
-      // COMING UP
-      // --------------------------------------------------
 
       if (upcomingItems.length > 0) {
 
@@ -388,10 +419,6 @@
 
     }
 
-
-    // ----------------------------------------------------
-    // SECTION TITLE
-    // ----------------------------------------------------
 
     function addSectionTitle(
       container,
@@ -413,10 +440,6 @@
 
     }
 
-
-    // ----------------------------------------------------
-    // CREATE PLAYLIST CARD
-    // ----------------------------------------------------
 
     function createCard(item) {
 
@@ -443,7 +466,6 @@
           today.getDate()
         );
 
-
       let statusClass =
         "future";
 
@@ -461,14 +483,9 @@
         statusClass = "today";
       }
 
-
       card.className =
         `playlist-card ${statusClass}`;
 
-
-      // --------------------------------------------------
-      // MODULE
-      // --------------------------------------------------
 
       if (item.type === "module") {
 
@@ -486,16 +503,13 @@
 
                 <span class="assignment-date">
                   Due:
-                  ${formatDateTime(
-                    assignment.dueAt
-                  )}
+                  ${formatDateTime(assignment.dueAt)}
                 </span>
               </li>
               `;
 
           }
         );
-
 
         card.innerHTML =
           `
@@ -525,14 +539,7 @@
           </a>
           `;
 
-      }
-
-
-      // --------------------------------------------------
-      // STANDALONE ASSIGNMENT
-      // --------------------------------------------------
-
-      else {
+      } else {
 
         card.innerHTML =
           `
@@ -560,14 +567,9 @@
 
       }
 
-
       return card;
     }
 
-
-    // ----------------------------------------------------
-    // FORMAT DATE
-    // ----------------------------------------------------
 
     function formatDateTime(dateString) {
 
@@ -588,10 +590,6 @@
     }
 
 
-    // ----------------------------------------------------
-    // BASIC HTML SAFETY
-    // ----------------------------------------------------
-
     function escapeHTML(text) {
 
       const div =
@@ -604,10 +602,6 @@
 
     }
 
-
-    // ----------------------------------------------------
-    // START
-    // ----------------------------------------------------
 
     loadPlaylist();
 
