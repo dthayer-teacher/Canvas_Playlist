@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Course Playlist</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px 50px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      color: #1f2937;
+    }
+
+    .header p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #6b7280;
+    }
+
+    .date-range {
+      margin-top: 8px;
+      font-weight: bold;
+      color: #374151;
+    }
+
+    .section-title {
+      margin-top: 35px;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      color: #1f2937;
+      border-bottom: 2px solid #d1d5db;
+      padding-bottom: 8px;
+    }
+
+    .playlist-card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      border-left: 6px solid #2563eb;
+    }
+
+    .playlist-card.past {
+      border-left-color: #dc2626;
+    }
+
+    .playlist-card.today {
+      border-left-color: #f59e0b;
+    }
+
+    .playlist-card.future {
+      border-left-color: #16a34a;
+    }
+
+    .card-type {
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+
+    .playlist-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      color: #111827;
+    }
+
+    .due-date {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .past .due-date {
+      color: #dc2626;
+    }
+
+    .today .due-date {
+      color: #d97706;
+    }
+
+    .future .due-date {
+      color: #15803d;
+    }
+
+    .assignment-list {
+      margin: 15px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .assignment-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .assignment-list li:last-child {
+      border-bottom: none;
+    }
+
+    .assignment-name {
+      font-weight: bold;
+    }
+
+    .assignment-date {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    .open-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 11px 18px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 7px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .open-button:hover {
+      background: #1d4ed8;
+    }
+
+    .status-message {
+      text-align: center;
+      padding: 35px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .loading {
+      color: #6b7280;
+    }
+
+    .error {
+      color: #b91c1c;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 20px 12px;
+      }
+
+      .header h1 {
+        font-size: 1.7rem;
+      }
+
+      .playlist-card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <div class="header">
+      <h1>Current Playlist</h1>
+
+      <p>
+        Assignments and modules from the previous 7 days
+        through the next 14 days.
+      </p>
+
+      <div id="dateRange" class="date-range"></div>
+    </div>
+
+    <div id="playlist">
+
+      <div class="status-message loading">
+        Loading your playlist...
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    const DATA_URL =
+      "https://script.google.com/macros/s/AKfycbzAiYGEDabMMfgN-L428davT77849rxP-YnyayLMYw0BSTpEzbbm_U-egll6XaJz4SY/exec";
+
+
+    // ----------------------------------------------------
+    // LOAD PLAYLIST
+    // ----------------------------------------------------
+
+    async function loadPlaylist() {
+
+      const playlistContainer =
+        document.getElementById("playlist");
+
+      try {
+
+        const response =
+          await fetch(DATA_URL);
+
+        if (!response.ok) {
+          throw new Error(
+            "Unable to connect to playlist data."
+          );
+        }
+
+        const data =
+          await response.json();
+
+        if (!data.success) {
+          throw new Error(
+            data.error ||
+            "Canvas returned an unknown error."
+          );
+        }
+
+        displayDateRange(
+          data.startDate,
+          data.endDate
+        );
+
+        displayPlaylist(
+          data.playlist
+        );
+
+      }
+
+      catch (error) {
+
+        playlistContainer.innerHTML =
+          `
+          <div class="status-message error">
+            <strong>Playlist could not be loaded.</strong>
+            <br><br>
+            ${error.message}
+          </div>
+          `;
+
+      }
+
+    }
+
+
+    // ----------------------------------------------------
+    // DISPLAY DATE RANGE
+    // ----------------------------------------------------
+
+    function displayDateRange(start, end) {
+
+      const startDate =
+        new Date(start);
+
+      const endDate =
+        new Date(end);
+
+      const options = {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      };
+
+      document.getElementById(
+        "dateRange"
+      ).textContent =
+        `${startDate.toLocaleDateString("en-US", options)}
+        – 
+        ${endDate.toLocaleDateString("en-US", options)}`;
+
+    }
+
+
+    // ----------------------------------------------------
+    // DISPLAY PLAYLIST
+    // ----------------------------------------------------
+
+    function displayPlaylist(items) {
+
+      const container =
+        document.getElementById("playlist");
+
+      container.innerHTML = "";
+
+
+      if (!items || items.length === 0) {
+
+        container.innerHTML =
+          `
+          <div class="status-message">
+            <strong>You are all caught up!</strong>
+            <br><br>
+            There are currently no assignments
+            in the playlist window.
+          </div>
+          `;
+
+        return;
+      }
+
+
+      const pastItems = [];
+      const upcomingItems = [];
+
+      const now = new Date();
+
+
+      items.forEach(item => {
+
+        const dueDate =
+          new Date(item.dueAt);
+
+        if (dueDate < now) {
+          pastItems.push(item);
+        } else {
+          upcomingItems.push(item);
+        }
+
+      });
+
+
+      // --------------------------------------------------
+      // RECENTLY DUE
+      // --------------------------------------------------
+
+      if (pastItems.length > 0) {
+
+        addSectionTitle(
+          container,
+          "Recently Due"
+        );
+
+        pastItems.forEach(item => {
+          container.appendChild(
+            createCard(item)
+          );
+        });
+
+      }
+
+
+      // --------------------------------------------------
+      // COMING UP
+      // --------------------------------------------------
+
+      if (upcomingItems.length > 0) {
+
+        addSectionTitle(
+          container,
+          "Coming Up"
+        );
+
+        upcomingItems.forEach(item => {
+          container.appendChild(
+            createCard(item)
+          );
+        });
+
+      }
+
+    }
+
+
+    // ----------------------------------------------------
+    // SECTION TITLE
+    // ----------------------------------------------------
+
+    function addSectionTitle(
+      container,
+      title
+    ) {
+
+      const heading =
+        document.createElement("div");
+
+      heading.className =
+        "section-title";
+
+      heading.textContent =
+        title;
+
+      container.appendChild(
+        heading
+      );
+
+    }
+
+
+    // ----------------------------------------------------
+    // CREATE PLAYLIST CARD
+    // ----------------------------------------------------
+
+    function createCard(item) {
+
+      const card =
+        document.createElement("div");
+
+      const dueDate =
+        new Date(item.dueAt);
+
+      const today =
+        new Date();
+
+      const dueDay =
+        new Date(
+          dueDate.getFullYear(),
+          dueDate.getMonth(),
+          dueDate.getDate()
+        );
+
+      const todayDay =
+        new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate()
+        );
+
+
+      let statusClass =
+        "future";
+
+      if (
+        dueDay.getTime() <
+        todayDay.getTime()
+      ) {
+        statusClass = "past";
+      }
+
+      else if (
+        dueDay.getTime() ===
+        todayDay.getTime()
+      ) {
+        statusClass = "today";
+      }
+
+
+      card.className =
+        `playlist-card ${statusClass}`;
+
+
+      // --------------------------------------------------
+      // MODULE
+      // --------------------------------------------------
+
+      if (item.type === "module") {
+
+        let assignmentsHTML = "";
+
+        item.assignments.forEach(
+          assignment => {
+
+            assignmentsHTML +=
+              `
+              <li>
+                <span class="assignment-name">
+                  ${escapeHTML(assignment.name)}
+                </span>
+
+                <span class="assignment-date">
+                  Due:
+                  ${formatDateTime(
+                    assignment.dueAt
+                  )}
+                </span>
+              </li>
+              `;
+
+          }
+        );
+
+
+        card.innerHTML =
+          `
+          <div class="card-type">
+            Module
+          </div>
+
+          <h2>
+            ${escapeHTML(item.title)}
+          </h2>
+
+          <div class="due-date">
+            Next Due:
+            ${formatDateTime(item.dueAt)}
+          </div>
+
+          <ul class="assignment-list">
+            ${assignmentsHTML}
+          </ul>
+
+          <a
+            class="open-button"
+            href="${item.url}"
+            target="_parent"
+          >
+            Open Module
+          </a>
+          `;
+
+      }
+
+
+      // --------------------------------------------------
+      // STANDALONE ASSIGNMENT
+      // --------------------------------------------------
+
+      else {
+
+        card.innerHTML =
+          `
+          <div class="card-type">
+            Assignment
+          </div>
+
+          <h2>
+            ${escapeHTML(item.title)}
+          </h2>
+
+          <div class="due-date">
+            Due:
+            ${formatDateTime(item.dueAt)}
+          </div>
+
+          <a
+            class="open-button"
+            href="${item.url}"
+            target="_parent"
+          >
+            Open Assignment
+          </a>
+          `;
+
+      }
+
+
+      return card;
+    }
+
+
+    // ----------------------------------------------------
+    // FORMAT DATE
+    // ----------------------------------------------------
+
+    function formatDateTime(dateString) {
+
+      const date =
+        new Date(dateString);
+
+      return date.toLocaleString(
+        "en-US",
+        {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit"
+        }
+      );
+
+    }
+
+
+    // ----------------------------------------------------
+    // BASIC HTML SAFETY
+    // ----------------------------------------------------
+
+    function escapeHTML(text) {
+
+      const div =
+        document.createElement("div");
+
+      div.textContent =
+        text;
+
+      return div.innerHTML;
+
+    }
+
+
+    // ----------------------------------------------------
+    // START
+    // ----------------------------------------------------
+
+    loadPlaylist();
+
+  </script>
+
+</body>
+</html>
