@@ -371,50 +371,45 @@
            BOTTOM NAVIGATION
            =============================================== -->
 
-      <div class="bottom-navigation">
+     <div class="bottom-navigation">
 
+  <a
+    id="homeButton"
+    class="nav-button"
+    href="#"
+    target="_parent"
+  >
+    Home
+  </a>
 
-        <a
-          id="contactButton"
-          class="nav-button"
-          href="#"
-          target="_parent"
-        >
-          Contact
-        </a>
+  <a
+    id="contactButton"
+    class="nav-button"
+    href="#"
+    target="_parent"
+  >
+    Contact
+  </a>
 
+  <a
+    id="virtualButton"
+    class="nav-button"
+    href="#"
+    target="_parent"
+  >
+    Virtual
+  </a>
 
-        <a
-          id="playlistButton"
-          class="nav-button"
-          href="#"
-          target="_parent"
-        >
-          Playlist
-        </a>
+  <a
+    id="modulesButton"
+    class="nav-button"
+    href="#"
+    target="_parent"
+  >
+    Modules
+  </a>
 
-
-        <a
-          id="virtualButton"
-          class="nav-button"
-          href="#"
-          target="_parent"
-        >
-          Virtual
-        </a>
-
-
-        <a
-          id="modulesButton"
-          class="nav-button"
-          href="#"
-          target="_parent"
-        >
-          Modules
-        </a>
-
-
-      </div>
+</div>
 
 
     </div>
@@ -461,40 +456,42 @@
 
     function setNavigationLinks() {
 
+  if (!COURSE_ID) {
+    return;
+  }
 
-      if (!COURSE_ID) {
-        return;
-      }
-
-
-      const baseCourseUrl =
-        `https://bwschools.instructure.com/courses/${COURSE_ID}`;
+  const baseCourseUrl =
+    `https://bwschools.instructure.com/courses/${COURSE_ID}`;
 
 
-      document.getElementById(
-        "contactButton"
-      ).href =
-        `${baseCourseUrl}/pages/contact`;
+  // HOME
+  document.getElementById(
+    "homeButton"
+  ).href =
+    `${baseCourseUrl}`;
 
 
-      document.getElementById(
-        "playlistButton"
-      ).href =
-        `${baseCourseUrl}/pages/playlist`;
+  // CONTACT
+  document.getElementById(
+    "contactButton"
+  ).href =
+    `${baseCourseUrl}/pages/contact`;
 
 
-      document.getElementById(
-        "virtualButton"
-      ).href =
-        `${baseCourseUrl}/pages/virtual`;
+  // VIRTUAL
+  document.getElementById(
+    "virtualButton"
+  ).href =
+    `${baseCourseUrl}/pages/virtual`;
 
 
-      document.getElementById(
-        "modulesButton"
-      ).href =
-        `${baseCourseUrl}/modules`;
+  // MODULES
+  document.getElementById(
+    "modulesButton"
+  ).href =
+    `${baseCourseUrl}/modules`;
 
-    }
+}
 
 
 
