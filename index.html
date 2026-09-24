@@ -311,10 +311,12 @@
     <div class="top-banner">
 
       <img
-        class="course-banner"
-        src="https://bwschools.instructure.com/courses/22643/files/6392801/preview"
-        alt="Course Banner"
-      >
+  id="courseBanner"
+  class="course-banner"
+  src=""
+  alt="Course Banner"
+  style="display: none;"
+>
 
     </div>
 
@@ -596,6 +598,23 @@
         ).textContent =
           data.courseName +
           " Playlist";
+        const courseBanner =
+  document.getElementById(
+    "courseBanner"
+  );
+
+if (data.courseImage) {
+
+  courseBanner.src =
+    data.courseImage;
+
+  courseBanner.alt =
+    data.courseName;
+
+  courseBanner.style.display =
+    "block";
+
+}
 
 
         document.title =
