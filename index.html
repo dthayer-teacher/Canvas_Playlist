@@ -28,312 +28,267 @@
     }
 
 
+    /* ==================================================
+       MAIN PAGE
+       ================================================== */
+
     .page-shell {
-
       max-width: 1000px;
-
       margin: 25px auto;
-
       background-color: #eef4f8;
-
       border-radius: 18px;
-
       overflow: hidden;
-
       border: 1px solid #d5e0e8;
-
     }
 
 
+    /* ==================================================
+       TOP BANNER
+       ================================================== */
+
     .top-banner {
-
       background-color: #f2f5f8;
-
       padding: 35px;
-
       text-align: center;
-
     }
 
 
     .course-banner {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  display: block;
-  margin: auto;
-  border-radius: 12px;
-}
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      margin: auto;
+      border-radius: 12px;
+    }
 
+
+    /* ==================================================
+       CONTENT AREA
+       ================================================== */
 
     .content {
-
       background-color: #ffffff;
-
       padding: 40px 35px;
-
     }
 
 
     .page-title {
-
       text-align: center;
-
       color: #1f4e79;
-
       font-size: 30px;
-
       margin: 0 0 12px 0;
-
     }
 
 
     .subtitle {
-
       text-align: center;
-
       color: #5f6f7c;
-
       font-size: 16px;
-
       margin-bottom: 8px;
-
     }
 
 
     .date-range {
-
       text-align: center;
-
       color: #1f4e79;
-
       font-weight: bold;
-
       margin-bottom: 30px;
-
     }
 
+
+    /* ==================================================
+       SECTION HEADINGS
+       ================================================== */
 
     .section-title {
-
       color: #1f4e79;
-
       font-size: 23px;
-
       margin: 30px 0 15px;
-
       padding-bottom: 8px;
-
       border-bottom: 2px solid #d5e0e8;
-
     }
 
 
+    /* ==================================================
+       PLAYLIST CARDS
+       ================================================== */
+
     .playlist-card {
-
       background: #f8fbfd;
-
       border: 1px solid #d5e0e8;
-
       border-radius: 12px;
-
       padding: 22px;
-
       margin-bottom: 18px;
-
     }
 
 
     .playlist-card.past {
-
-      border-left:
-        6px solid #b94a48;
-
+      border-left: 6px solid #b94a48;
     }
 
 
     .playlist-card.today {
-
-      border-left:
-        6px solid #d39e00;
-
+      border-left: 6px solid #d39e00;
     }
 
 
     .playlist-card.future {
-
-      border-left:
-        6px solid #4f8a5b;
-
+      border-left: 6px solid #4f8a5b;
     }
 
 
     .card-type {
-
       color: #6b7780;
-
       font-size: 13px;
-
       font-weight: bold;
-
       text-transform: uppercase;
-
       margin-bottom: 6px;
-
     }
 
 
     .playlist-card h2 {
-
       color: #1f4e79;
-
       font-size: 23px;
-
       margin: 0 0 10px 0;
-
     }
 
 
     .due-date {
-
       font-weight: bold;
-
       margin-bottom: 14px;
-
     }
 
 
+    /* ==================================================
+       ASSIGNMENTS INSIDE MODULE CARDS
+       ================================================== */
+
     .assignment-list {
-
       list-style: none;
-
       padding: 0;
-
       margin: 12px 0 5px;
-
     }
 
 
     .assignment-list li {
-
       padding: 10px 0;
-
-      border-bottom:
-        1px solid #dfe7ed;
-
+      border-bottom: 1px solid #dfe7ed;
     }
 
 
     .assignment-list li:last-child {
-
       border-bottom: none;
-
     }
 
 
     .assignment-name {
-
       font-weight: bold;
-
       color: #2b3e50;
-
     }
 
 
     .assignment-date {
-
       display: block;
-
       margin-top: 4px;
-
       color: #687783;
-
       font-size: 14px;
-
     }
 
 
+    /* ==================================================
+       OPEN ASSIGNMENT / MODULE BUTTON
+       ================================================== */
+
     .open-button {
-
       display: inline-block;
-
       width: 220px;
-
       background-color: #1f4e79;
-
       color: #ffffff;
-
       padding: 16px 10px;
-
       border-radius: 10px;
-
       text-decoration: none;
-
       font-size: 19px;
-
       text-align: center;
-
       margin-top: 10px;
-
     }
 
 
     .open-button:hover {
-
       background-color: #163a5b;
-
     }
 
+
+    /* ==================================================
+       STATUS MESSAGES
+       ================================================== */
 
     .status-message {
-
       text-align: center;
-
       background: #f8fbfd;
-
       border: 1px solid #d5e0e8;
-
       border-radius: 12px;
-
       padding: 30px;
-
       color: #4d5f6d;
-
     }
 
 
-    @media (
-      max-width: 700px
-    ) {
+    /* ==================================================
+       BOTTOM NAVIGATION
+       ================================================== */
+
+    .bottom-navigation {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 25px;
+      border-top: 2px solid #d5e0e8;
+    }
+
+
+    .nav-button {
+      display: inline-block;
+      width: 190px;
+      background-color: #1f4e79;
+      color: #ffffff;
+      padding: 16px 10px;
+      margin: 8px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 20px;
+      text-align: center;
+    }
+
+
+    .nav-button:hover {
+      background-color: #163a5b;
+    }
+
+
+    /* ==================================================
+       MOBILE
+       ================================================== */
+
+    @media (max-width: 700px) {
 
       .page-shell {
-
         margin: 10px;
-
       }
 
 
       .content {
-
-        padding:
-          25px 18px;
-
+        padding: 25px 18px;
       }
 
 
       .top-banner {
-
         padding: 20px;
-
       }
 
 
-      .open-button {
-
+      .open-button,
+      .nav-button {
         width: 100%;
-
         max-width: 260px;
-
       }
 
     }
@@ -349,19 +304,28 @@
   <div class="page-shell">
 
 
+    <!-- =================================================
+         COURSE BANNER
+         ================================================= -->
+
     <div class="top-banner">
 
-  <img
-    class="course-banner"
-    src="https://bwschools.instructure.com/courses/22643/files/6392801/preview"
-    alt="Web Development"
-  >
+      <img
+        class="course-banner"
+        src="https://bwschools.instructure.com/courses/22643/files/6392801/preview"
+        alt="Course Banner"
+      >
 
-</div>
+    </div>
+
 
 
     <div class="content">
 
+
+      <!-- ===============================================
+           COURSE TITLE
+           =============================================== -->
 
       <h1
         id="pageTitle"
@@ -373,8 +337,8 @@
 
       <div class="subtitle">
 
-        Assignments from the previous
-        7 days through the next 14 days.
+        Assignments from the previous 7 days
+        through the next 14 days.
 
       </div>
 
@@ -385,6 +349,11 @@
       >
       </div>
 
+
+
+      <!-- ===============================================
+           PLAYLIST
+           =============================================== -->
 
       <div id="playlist">
 
@@ -397,651 +366,856 @@
       </div>
 
 
+
+      <!-- ===============================================
+           BOTTOM NAVIGATION
+           =============================================== -->
+
+      <div class="bottom-navigation">
+
+
+        <a
+          id="contactButton"
+          class="nav-button"
+          href="#"
+          target="_parent"
+        >
+          Contact
+        </a>
+
+
+        <a
+          id="playlistButton"
+          class="nav-button"
+          href="#"
+          target="_parent"
+        >
+          Playlist
+        </a>
+
+
+        <a
+          id="virtualButton"
+          class="nav-button"
+          href="#"
+          target="_parent"
+        >
+          Virtual
+        </a>
+
+
+        <a
+          id="modulesButton"
+          class="nav-button"
+          href="#"
+          target="_parent"
+        >
+          Modules
+        </a>
+
+
+      </div>
+
+
     </div>
 
   </div>
 
 
 
-<script>
+  <script>
 
 
-  // ==================================================
-  // GOOGLE APPS SCRIPT URL
-  // ==================================================
+    // ==================================================
+    // GOOGLE APPS SCRIPT WEB APP
+    // ==================================================
 
-  const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbzAiYGEDabMMfgN-L428davT77849rxP-YnyayLMYw0BSTpEzbbm_U-egll6XaJz4SY/exec";
-
-
-
-  // ==================================================
-  // GET COURSE ID FROM URL
-  //
-  // Example:
-  // ?course=22643
-  // ==================================================
-
-  const params =
-    new URLSearchParams(
-      window.location.search
-    );
-
-
-  const COURSE_ID =
-    params.get("course");
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbzAiYGEDabMMfgN-L428davT77849rxP-YnyayLMYw0BSTpEzbbm_U-egll6XaJz4SY/exec";
 
 
 
-  async function loadPlaylist() {
+    // ==================================================
+    // GET COURSE ID FROM URL
+    //
+    // Example:
+    //
+    // ?course=22643
+    //
+    // ==================================================
 
-
-    const playlistContainer =
-      document.getElementById(
-        "playlist"
+    const params =
+      new URLSearchParams(
+        window.location.search
       );
 
 
-    if (!COURSE_ID) {
+    const COURSE_ID =
+      params.get("course");
 
-      playlistContainer.innerHTML =
-        `
-        <div class="status-message">
 
-          <strong>
-            Course not specified.
-          </strong>
 
-        </div>
-        `;
+    // ==================================================
+    // SET NAVIGATION LINKS
+    // ==================================================
 
-      return;
+    function setNavigationLinks() {
+
+
+      if (!COURSE_ID) {
+        return;
+      }
+
+
+      const baseCourseUrl =
+        `https://bwschools.instructure.com/courses/${COURSE_ID}`;
+
+
+      document.getElementById(
+        "contactButton"
+      ).href =
+        `${baseCourseUrl}/pages/contact`;
+
+
+      document.getElementById(
+        "playlistButton"
+      ).href =
+        `${baseCourseUrl}/pages/playlist`;
+
+
+      document.getElementById(
+        "virtualButton"
+      ).href =
+        `${baseCourseUrl}/pages/virtual`;
+
+
+      document.getElementById(
+        "modulesButton"
+      ).href =
+        `${baseCourseUrl}/modules`;
 
     }
 
 
-    try {
+
+    // ==================================================
+    // LOAD PLAYLIST
+    // ==================================================
+
+    async function loadPlaylist() {
 
 
-      const dataUrl =
-        SCRIPT_URL +
-        "?course=" +
-        encodeURIComponent(
-          COURSE_ID
+      const playlistContainer =
+        document.getElementById(
+          "playlist"
         );
 
 
-      const response =
-        await fetch(
-          dataUrl
-        );
+      // -----------------------------------------------
+      // NO COURSE ID
+      // -----------------------------------------------
+
+      if (!COURSE_ID) {
 
 
-      if (!response.ok) {
+        playlistContainer.innerHTML =
+          `
+          <div class="status-message">
 
-        throw new Error(
-          "Unable to connect to playlist data."
-        );
+            <strong>
+              Course not specified.
+            </strong>
+
+            <br><br>
+
+            This playlist needs a Canvas
+            course ID.
+
+          </div>
+          `;
+
+
+        return;
 
       }
 
 
-      const data =
-        await response.json();
+
+      try {
 
 
-      if (!data.success) {
+        // ---------------------------------------------
+        // BUILD GOOGLE SCRIPT URL
+        // ---------------------------------------------
 
-        throw new Error(
-          data.error ||
-          "Canvas returned an unknown error."
+        const dataUrl =
+          SCRIPT_URL +
+          "?course=" +
+          encodeURIComponent(
+            COURSE_ID
+          );
+
+
+        // ---------------------------------------------
+        // GET DATA
+        // ---------------------------------------------
+
+        const response =
+          await fetch(
+            dataUrl
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Unable to connect to playlist data."
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        if (!data.success) {
+
+          throw new Error(
+            data.error ||
+            "Canvas returned an unknown error."
+          );
+
+        }
+
+
+
+        // ---------------------------------------------
+        // DISPLAY COURSE NAME
+        // ---------------------------------------------
+
+        document.getElementById(
+          "pageTitle"
+        ).textContent =
+          data.courseName +
+          " Playlist";
+
+
+        document.title =
+          data.courseName +
+          " Playlist";
+
+
+
+        // ---------------------------------------------
+        // DISPLAY DATE RANGE
+        // ---------------------------------------------
+
+        displayDateRange(
+          data.startDate,
+          data.endDate
         );
 
+
+
+        // ---------------------------------------------
+        // DISPLAY PLAYLIST
+        // ---------------------------------------------
+
+        displayPlaylist(
+          data.playlist
+        );
+
+
       }
 
 
-      // ----------------------------------------------
-      // COURSE NAME
-      // ----------------------------------------------
+      catch (error) {
 
-      document.getElementById(
-        "pageTitle"
-      ).textContent =
-        data.courseName +
-        " Playlist";
 
+        playlistContainer.innerHTML =
+          `
+          <div class="status-message">
 
-      document.title =
-        data.courseName +
-        " Playlist";
+            <strong>
+              Playlist could not be loaded.
+            </strong>
 
+            <br><br>
 
-      displayDateRange(
-        data.startDate,
-        data.endDate
-      );
+            ${escapeHTML(
+              error.message
+            )}
 
-
-      displayPlaylist(
-        data.playlist
-      );
-
-
-    }
-
-
-    catch (error) {
-
-
-      playlistContainer.innerHTML =
-        `
-        <div class="status-message">
-
-          <strong>
-            Playlist could not be loaded.
-          </strong>
-
-          <br><br>
-
-          ${escapeHTML(
-            error.message
-          )}
-
-        </div>
-        `;
-
-    }
-
-  }
-
-
-
-  function displayDateRange(
-    start,
-    end
-  ) {
-
-
-    const startDate =
-      new Date(start);
-
-
-    const endDate =
-      new Date(end);
-
-
-    const options = {
-
-      month:
-        "long",
-
-      day:
-        "numeric",
-
-      year:
-        "numeric"
-
-    };
-
-
-    document.getElementById(
-      "dateRange"
-    ).textContent =
-
-      startDate.toLocaleDateString(
-        "en-US",
-        options
-      )
-
-      +
-
-      " – "
-
-      +
-
-      endDate.toLocaleDateString(
-        "en-US",
-        options
-      );
-
-  }
-
-
-
-  function displayPlaylist(
-    items
-  ) {
-
-
-    const container =
-      document.getElementById(
-        "playlist"
-      );
-
-
-    container.innerHTML = "";
-
-
-    if (
-      !items ||
-      items.length === 0
-    ) {
-
-
-      container.innerHTML =
-        `
-        <div class="status-message">
-
-          <strong>
-            You are all caught up!
-          </strong>
-
-          <br><br>
-
-          There are currently no
-          assignments in the playlist
-          window.
-
-        </div>
-        `;
-
-
-      return;
-
-    }
-
-
-    const pastItems = [];
-
-    const upcomingItems = [];
-
-
-    const now =
-      new Date();
-
-
-    items.forEach(
-      item => {
-
-
-        const dueDate =
-          new Date(
-            item.dueAt
-          );
-
-
-        if (
-          dueDate < now
-        ) {
-
-          pastItems.push(
-            item
-          );
-
-        }
-
-        else {
-
-          upcomingItems.push(
-            item
-          );
-
-        }
+          </div>
+          `;
 
       }
-    );
+
+    }
 
 
 
-    if (
-      pastItems.length > 0
+    // ==================================================
+    // DISPLAY DATE RANGE
+    // ==================================================
+
+    function displayDateRange(
+      start,
+      end
     ) {
 
 
-      addSectionTitle(
-        container,
-        "Recently Due"
-      );
+      const startDate =
+        new Date(start);
 
 
-      pastItems.forEach(
-        item => {
+      const endDate =
+        new Date(end);
 
-          container.appendChild(
-            createCard(
-              item
-            )
-          );
 
-        }
-      );
-
-    }
-
-
-
-    if (
-      upcomingItems.length > 0
-    ) {
-
-
-      addSectionTitle(
-        container,
-        "Coming Up"
-      );
-
-
-      upcomingItems.forEach(
-        item => {
-
-          container.appendChild(
-            createCard(
-              item
-            )
-          );
-
-        }
-      );
-
-    }
-
-  }
-
-
-
-  function addSectionTitle(
-    container,
-    title
-  ) {
-
-
-    const heading =
-      document.createElement(
-        "div"
-      );
-
-
-    heading.className =
-      "section-title";
-
-
-    heading.textContent =
-      title;
-
-
-    container.appendChild(
-      heading
-    );
-
-  }
-
-
-
-  function createCard(
-    item
-  ) {
-
-
-    const card =
-      document.createElement(
-        "div"
-      );
-
-
-    const dueDate =
-      new Date(
-        item.dueAt
-      );
-
-
-    const today =
-      new Date();
-
-
-    const dueDay =
-      new Date(
-        dueDate.getFullYear(),
-        dueDate.getMonth(),
-        dueDate.getDate()
-      );
-
-
-    const todayDay =
-      new Date(
-        today.getFullYear(),
-        today.getMonth(),
-        today.getDate()
-      );
-
-
-    let statusClass =
-      "future";
-
-
-    if (
-      dueDay.getTime() <
-      todayDay.getTime()
-    ) {
-
-      statusClass =
-        "past";
-
-    }
-
-
-    else if (
-      dueDay.getTime() ===
-      todayDay.getTime()
-    ) {
-
-      statusClass =
-        "today";
-
-    }
-
-
-    card.className =
-      "playlist-card " +
-      statusClass;
-
-
-
-    // ================================================
-    // MODULE
-    // ================================================
-
-    if (
-      item.type ===
-      "module"
-    ) {
-
-
-      let assignmentsHTML =
-        "";
-
-
-      item.assignments.forEach(
-        assignment => {
-
-
-          assignmentsHTML +=
-            `
-            <li>
-
-              <span
-                class="assignment-name"
-              >
-                ${escapeHTML(
-                  assignment.name
-                )}
-              </span>
-
-              <span
-                class="assignment-date"
-              >
-
-                Due:
-                ${formatDateTime(
-                  assignment.dueAt
-                )}
-
-              </span>
-
-            </li>
-            `;
-
-        }
-      );
-
-
-      card.innerHTML =
-        `
-        <div class="card-type">
-          Module
-        </div>
-
-        <h2>
-          ${escapeHTML(
-            item.title
-          )}
-        </h2>
-
-        <div class="due-date">
-
-          Next Due:
-          ${formatDateTime(
-            item.dueAt
-          )}
-
-        </div>
-
-        <ul class="assignment-list">
-
-          ${assignmentsHTML}
-
-        </ul>
-
-        <a
-          class="open-button"
-          href="${item.url}"
-          target="_parent"
-        >
-          Open Module
-        </a>
-        `;
-
-    }
-
-
-
-    // ================================================
-    // ASSIGNMENT
-    // ================================================
-
-    else {
-
-
-      card.innerHTML =
-        `
-        <div class="card-type">
-          Assignment
-        </div>
-
-        <h2>
-          ${escapeHTML(
-            item.title
-          )}
-        </h2>
-
-        <div class="due-date">
-
-          Due:
-          ${formatDateTime(
-            item.dueAt
-          )}
-
-        </div>
-
-        <a
-          class="open-button"
-          href="${item.url}"
-          target="_parent"
-        >
-          Open Assignment
-        </a>
-        `;
-
-    }
-
-
-    return card;
-
-  }
-
-
-
-  function formatDateTime(
-    dateString
-  ) {
-
-
-    const date =
-      new Date(
-        dateString
-      );
-
-
-    return date.toLocaleString(
-      "en-US",
-      {
-
-        weekday:
-          "short",
+      const options = {
 
         month:
-          "short",
+          "long",
 
         day:
           "numeric",
 
-        hour:
-          "numeric",
+        year:
+          "numeric"
 
-        minute:
-          "2-digit"
+      };
+
+
+      document.getElementById(
+        "dateRange"
+      ).textContent =
+
+        startDate.toLocaleDateString(
+          "en-US",
+          options
+        )
+
+        +
+
+        " – "
+
+        +
+
+        endDate.toLocaleDateString(
+          "en-US",
+          options
+        );
+
+    }
+
+
+
+    // ==================================================
+    // DISPLAY PLAYLIST
+    // ==================================================
+
+    function displayPlaylist(
+      items
+    ) {
+
+
+      const container =
+        document.getElementById(
+          "playlist"
+        );
+
+
+      container.innerHTML =
+        "";
+
+
+      // -----------------------------------------------
+      // NOTHING DUE
+      // -----------------------------------------------
+
+      if (
+        !items ||
+        items.length === 0
+      ) {
+
+
+        container.innerHTML =
+          `
+          <div class="status-message">
+
+            <strong>
+              You are all caught up!
+            </strong>
+
+            <br><br>
+
+            There are currently no
+            assignments in the playlist
+            window.
+
+          </div>
+          `;
+
+
+        return;
 
       }
-    );
-
-  }
 
 
 
-  function escapeHTML(
-    text
-  ) {
+      const pastItems = [];
+
+      const upcomingItems = [];
 
 
-    const div =
-      document.createElement(
-        "div"
+      const now =
+        new Date();
+
+
+
+      // -----------------------------------------------
+      // SEPARATE PAST AND UPCOMING
+      // -----------------------------------------------
+
+      items.forEach(
+        item => {
+
+
+          const dueDate =
+            new Date(
+              item.dueAt
+            );
+
+
+          if (
+            dueDate < now
+          ) {
+
+            pastItems.push(
+              item
+            );
+
+          }
+
+          else {
+
+            upcomingItems.push(
+              item
+            );
+
+          }
+
+        }
       );
 
 
-    div.textContent =
-      text;
+
+      // -----------------------------------------------
+      // RECENTLY DUE
+      // -----------------------------------------------
+
+      if (
+        pastItems.length > 0
+      ) {
 
 
-    return div.innerHTML;
-
-  }
-
-
-
-  loadPlaylist();
+        addSectionTitle(
+          container,
+          "Recently Due"
+        );
 
 
-</script>
+        pastItems.forEach(
+          item => {
+
+
+            container.appendChild(
+              createCard(
+                item
+              )
+            );
+
+
+          }
+        );
+
+      }
+
+
+
+      // -----------------------------------------------
+      // COMING UP
+      // -----------------------------------------------
+
+      if (
+        upcomingItems.length > 0
+      ) {
+
+
+        addSectionTitle(
+          container,
+          "Coming Up"
+        );
+
+
+        upcomingItems.forEach(
+          item => {
+
+
+            container.appendChild(
+              createCard(
+                item
+              )
+            );
+
+
+          }
+        );
+
+      }
+
+    }
+
+
+
+    // ==================================================
+    // SECTION TITLE
+    // ==================================================
+
+    function addSectionTitle(
+      container,
+      title
+    ) {
+
+
+      const heading =
+        document.createElement(
+          "div"
+        );
+
+
+      heading.className =
+        "section-title";
+
+
+      heading.textContent =
+        title;
+
+
+      container.appendChild(
+        heading
+      );
+
+    }
+
+
+
+    // ==================================================
+    // CREATE CARD
+    // ==================================================
+
+    function createCard(
+      item
+    ) {
+
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      const dueDate =
+        new Date(
+          item.dueAt
+        );
+
+
+      const today =
+        new Date();
+
+
+      const dueDay =
+        new Date(
+          dueDate.getFullYear(),
+          dueDate.getMonth(),
+          dueDate.getDate()
+        );
+
+
+      const todayDay =
+        new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate()
+        );
+
+
+      let statusClass =
+        "future";
+
+
+      if (
+        dueDay.getTime() <
+        todayDay.getTime()
+      ) {
+
+        statusClass =
+          "past";
+
+      }
+
+
+      else if (
+        dueDay.getTime() ===
+        todayDay.getTime()
+      ) {
+
+        statusClass =
+          "today";
+
+      }
+
+
+      card.className =
+        "playlist-card " +
+        statusClass;
+
+
+
+      // ================================================
+      // MODULE CARD
+      // ================================================
+
+      if (
+        item.type ===
+        "module"
+      ) {
+
+
+        let assignmentsHTML =
+          "";
+
+
+        item.assignments.forEach(
+          assignment => {
+
+
+            assignmentsHTML +=
+              `
+              <li>
+
+                <span
+                  class="assignment-name"
+                >
+                  ${escapeHTML(
+                    assignment.name
+                  )}
+                </span>
+
+
+                <span
+                  class="assignment-date"
+                >
+
+                  Due:
+                  ${formatDateTime(
+                    assignment.dueAt
+                  )}
+
+                </span>
+
+              </li>
+              `;
+
+
+          }
+        );
+
+
+        card.innerHTML =
+          `
+          <div class="card-type">
+
+            Module
+
+          </div>
+
+
+          <h2>
+
+            ${escapeHTML(
+              item.title
+            )}
+
+          </h2>
+
+
+          <div class="due-date">
+
+            Next Due:
+            ${formatDateTime(
+              item.dueAt
+            )}
+
+          </div>
+
+
+          <ul class="assignment-list">
+
+            ${assignmentsHTML}
+
+          </ul>
+
+
+          <a
+            class="open-button"
+            href="${item.url}"
+            target="_parent"
+          >
+
+            Open Module
+
+          </a>
+          `;
+
+      }
+
+
+
+      // ================================================
+      // STANDALONE ASSIGNMENT CARD
+      // ================================================
+
+      else {
+
+
+        card.innerHTML =
+          `
+          <div class="card-type">
+
+            Assignment
+
+          </div>
+
+
+          <h2>
+
+            ${escapeHTML(
+              item.title
+            )}
+
+          </h2>
+
+
+          <div class="due-date">
+
+            Due:
+            ${formatDateTime(
+              item.dueAt
+            )}
+
+          </div>
+
+
+          <a
+            class="open-button"
+            href="${item.url}"
+            target="_parent"
+          >
+
+            Open Assignment
+
+          </a>
+          `;
+
+      }
+
+
+      return card;
+
+    }
+
+
+
+    // ==================================================
+    // FORMAT DATE AND TIME
+    // ==================================================
+
+    function formatDateTime(
+      dateString
+    ) {
+
+
+      const date =
+        new Date(
+          dateString
+        );
+
+
+      return date.toLocaleString(
+        "en-US",
+        {
+
+          weekday:
+            "short",
+
+          month:
+            "short",
+
+          day:
+            "numeric",
+
+          hour:
+            "numeric",
+
+          minute:
+            "2-digit"
+
+        }
+      );
+
+    }
+
+
+
+    // ==================================================
+    // ESCAPE HTML
+    // ==================================================
+
+    function escapeHTML(
+      text
+    ) {
+
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.textContent =
+        text;
+
+
+      return div.innerHTML;
+
+    }
+
+
+
+    // ==================================================
+    // START PAGE
+    // ==================================================
+
+    setNavigationLinks();
+
+    loadPlaylist();
+
+
+  </script>
 
 
 </body>
