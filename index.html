@@ -732,167 +732,191 @@ if (data.courseImage) {
     // DISPLAY PLAYLIST
     // ==================================================
 
-    function displayPlaylist(
-      items
-    ) {
+    function displayPlaylist(items) {
+
+  const container =
+    document.getElementById(
+      "playlist"
+    );
+
+  container.innerHTML = "";
+
+  if (
+    !items ||
+    items.length === 0
+  ) {
+
+    container.innerHTML =
+      `
+      <div class="status-message">
+
+        <strong>
+          You are all caught up!
+        </strong>
+
+        <br><br>
+
+        There are currently no assignments
+        in the playlist window.
+
+      </div>
+      `;
+
+    return;
+
+  }
 
 
-      const container =
-        document.getElementById(
-          "playlist"
+  const pastDueItems = [];
+  const dueTodayItems = [];
+  const upcomingItems = [];
+
+
+  const today =
+    new Date();
+
+  const todayDate =
+    new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
+
+
+  items.forEach(
+    item => {
+
+      const dueDate =
+        new Date(
+          item.dueAt
+        );
+
+      const dueDay =
+        new Date(
+          dueDate.getFullYear(),
+          dueDate.getMonth(),
+          dueDate.getDate()
         );
 
 
-      container.innerHTML =
-        "";
-
-
-      // -----------------------------------------------
-      // NOTHING DUE
-      // -----------------------------------------------
-
       if (
-        !items ||
-        items.length === 0
+        dueDay.getTime() <
+        todayDate.getTime()
       ) {
 
-
-        container.innerHTML =
-          `
-          <div class="status-message">
-
-            <strong>
-              You are all caught up!
-            </strong>
-
-            <br><br>
-
-            There are currently no
-            assignments in the playlist
-            window.
-
-          </div>
-          `;
-
-
-        return;
-
-      }
-
-
-
-      const pastItems = [];
-
-      const upcomingItems = [];
-
-
-      const now =
-        new Date();
-
-
-
-      // -----------------------------------------------
-      // SEPARATE PAST AND UPCOMING
-      // -----------------------------------------------
-
-      items.forEach(
-        item => {
-
-
-          const dueDate =
-            new Date(
-              item.dueAt
-            );
-
-
-          if (
-            dueDate < now
-          ) {
-
-            pastItems.push(
-              item
-            );
-
-          }
-
-          else {
-
-            upcomingItems.push(
-              item
-            );
-
-          }
-
-        }
-      );
-
-
-
-      // -----------------------------------------------
-      // RECENTLY DUE
-      // -----------------------------------------------
-
-      if (
-        pastItems.length > 0
-      ) {
-
-
-        addSectionTitle(
-          container,
-          "Recently Due"
-        );
-
-
-        pastItems.forEach(
-          item => {
-
-
-            container.appendChild(
-              createCard(
-                item
-              )
-            );
-
-
-          }
+        pastDueItems.push(
+          item
         );
 
       }
 
-
-
-      // -----------------------------------------------
-      // COMING UP
-      // -----------------------------------------------
-
-      if (
-        upcomingItems.length > 0
+      else if (
+        dueDay.getTime() ===
+        todayDate.getTime()
       ) {
 
-
-        addSectionTitle(
-          container,
-          "Coming Up"
+        dueTodayItems.push(
+          item
         );
 
+      }
 
-        upcomingItems.forEach(
-          item => {
+      else {
 
-
-            container.appendChild(
-              createCard(
-                item
-              )
-            );
-
-
-          }
+        upcomingItems.push(
+          item
         );
 
       }
 
     }
+  );
+
+
+  // ==================================================
+  // PAST DUE
+  // ==================================================
+
+  if (
+    pastDueItems.length > 0
+  ) {
+
+    addSectionTitle(
+      container,
+      "Past Due"
+    );
+
+    pastDueItems.forEach(
+      item => {
+
+        container.appendChild(
+          createCard(
+            item
+          )
+        );
+
+      }
+    );
+
+  }
+
+
+  // ==================================================
+  // DUE TODAY
+  // ==================================================
+
+  if (
+    dueTodayItems.length > 0
+  ) {
+
+    addSectionTitle(
+      container,
+      "Due Today"
+    );
+
+    dueTodayItems.forEach(
+      item => {
+
+        container.appendChild(
+          createCard(
+            item
+          )
+        );
+
+      }
+    );
+
+  }
+
+
+  // ==================================================
+  // UPCOMING
+  // ==================================================
+
+  if (
+    upcomingItems.length > 0
+  ) {
+
+    addSectionTitle(
+      container,
+      "Upcoming"
+    );
+
+    upcomingItems.forEach(
+      item => {
+
+        container.appendChild(
+          createCard(
+            item
+          )
+        );
+
+      }
+    );
+
+  }
+
+}
 
 
 
